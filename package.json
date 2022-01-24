@@ -1,6 +1,6 @@
 {
   "name": "@agenter-labs/unit-calculator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Unit conversion calculator",
   "scripts": {
     "start": "rollup -c rollup.config.dev.js -w",
