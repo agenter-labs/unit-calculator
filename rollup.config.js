@@ -3,6 +3,7 @@ import commonjs from "@rollup/plugin-commonjs";
 import typescript from "@rollup/plugin-typescript";
 import postcss from "rollup-plugin-postcss";
 import dts from "rollup-plugin-dts";
+import replace from '@rollup/plugin-replace';
 
 const packageJson = require("./package.json");
 
@@ -13,19 +14,24 @@ export default [
       {
         file: packageJson.main,
         format: "cjs",
-        sourcemap: true,
+        sourcemap: false,
+        exports: "default"
       },
       {
         file: packageJson.module,
         format: "esm",
-        sourcemap: true,
+        sourcemap: false,
+        exports: "default"
       },
     ],
     plugins: [
+      replace(),
+      postcss({
+        extensions: [".css"],
+      }),
       resolve(),
       commonjs(),
       typescript({ tsconfig: "./tsconfig.json" }),
-      postcss(),
     ],
   },
   {
