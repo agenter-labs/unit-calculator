@@ -59,7 +59,9 @@ const Calculator = (props: CalculatorProps) => {
           <li
             onClick={() => setShowOptions(!showOptions)}
             className='custom__select__box'>
-            --Select Unit--
+            {conversion
+              ? `(${conversion?.unitFrom}, ${conversion?.unitTo})`
+              : "--Select Unit--"}
           </li>
           {showOptions &&
             props.conversions.map((unit, index) => (
